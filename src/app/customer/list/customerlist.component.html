@@ -1,0 +1,38 @@
+<html>
+  <head>
+<title>Customer List</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <th>Customer Number</th>
+        <th>First Name</th>
+        <th> Last Name</th>
+        <th> Birth Date</th>
+        <th> Username</th>
+        <th> Password</th>
+        <th>Phone Number</th>
+        <th> Phone Type</th>
+        <th> Action </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cust of listCustomer">
+          <td><a (click)="selectCustomer(cust);"><u>{{cust.customerNumber}}</u></a></td>
+          <td>{{cust.firstName}}</td>
+          <td>{{cust.lastName}}</td>
+          <td>{{cust.birthDate}}</td>
+          <td>{{cust.username}}</td>
+          <td>{{cust.password}}</td>
+          <td>{{cust.phoneNumber}}</td>
+          <td>{{cust.phoneType}}</td>
+          <td>
+          <button (click)="delete(cust.customerNumber)">clear</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <app-customerform #formCustomer *ngIf="showDetail" [customer]="selectedCustomer" (result)="prosesResult($event)"></app-customerform>
+    </div>
+  </body>
+  <!-- <app-cobacombo (customer)="selectedCustomer($event)"></app-cobacombo> -->
+</html>

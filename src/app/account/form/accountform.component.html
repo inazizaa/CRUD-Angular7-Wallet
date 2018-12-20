@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>
+
+    </title>
+  </head>
+  <body><h1> Form Account </h1>
+    <form [formGroup]="accountFormGroup">
+    <table>
+      <tr><td>Open Date:</td>
+      <td> <input type="date"  formControlName="openDate"></td><br>
+    </tr>
+    <tr>
+      <td>Balance: </td>
+      <td><input type="string" formControlName="balance"></td>
+    </tr>
+    <tr>
+      <td>Customer Id: </td>
+      <td><input type="Customer" formControlName="customerId"></td>
+    </tr>
+    </table>
+    </form>
+
+    <button type="button" (click)="cancel()">Cancel</button>
+    <button type="button" (click)="submitData()">Update</button>
+    <button type="button" (click)="insertData()">Insert</button>
+  </body>
+</html>

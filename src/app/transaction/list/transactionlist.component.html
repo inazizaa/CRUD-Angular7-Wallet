@@ -1,0 +1,31 @@
+<html>
+  <head>
+<title>Transaction List</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <th>Transaksi ID</th>
+        <th>Amount Sign</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Account ID</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trans of listTransaction">
+          <td><a (click)="selectTransaction(trans);"><u>{{trans.idtrans}}</u></a></td>
+          <td>{{trans.amountsign}}</td>
+          <td>{{trans.amount}}</td>
+          <td>{{trans.type}}</td>
+          <td>{{trans.accountId.accountNumber}}</td>
+          <td>
+            <button (click)="delete(trans.idtrans)">clear</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div>
+        <app-customerform #formCustomer *ngIf="showDetail" [customer]="selectedCustomer" (result)="prosesResult($event)"></app-customerform>
+      </div> -->
+      <app-transactionform #formTransaction *ngIf="showDetail" [transaction]="selectedTransaction" (result)="prosesResult($event)"></app-transactionform>
+    </body>
+  </html>

@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>
+
+    </title>
+  </head>
+  <body><h1> Form Transaction </h1>
+    <form [formGroup]="transactionFormGroup">
+    <table>
+      <tr>
+        <td>Amountsign:</td>
+      <td> <input type="text"  formControlName="amountsign"></td><br>
+    </tr>
+    <tr>
+      <td>Amount: </td>
+      <td><input type="text" formControlName="amount"></td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td> <input type="text"  formControlName="type"></td><br>
+    </tr>
+    <tr>
+      <td>Account ID </td>
+      <td><input type="text" formControlName="accountId"></td>
+    </tr>
+  </table>
+</form>
+<button type="button" (click)="cancelChanges()">Cancel</button>
+<button type="button" (click)="submitData()" [disabled]="!transactionFormGroup.valid">Update</button>
+<button type="button" (click)="insertData()">Insert</button>
+</body>
+</html>
+    
