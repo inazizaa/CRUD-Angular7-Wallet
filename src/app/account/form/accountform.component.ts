@@ -31,20 +31,6 @@ export class AccountformComponent implements OnInit {
     this.updateData();
   }
 
-  updateData(){
-    this.setDataToForm(this.account);
-  }
-
-  setDataToForm(account){
-    if(this.account){
-      this.accountFormGroup.controls['accountNumber'].setValue(this.account.accountNumber);
-      this.accountFormGroup.controls['openDate'].setValue(this.account.openDate);
-      this.accountFormGroup.controls['balance'].setValue(this.account.balance);
-      this.accountFormGroup.controls['customerId'].setValue(this.account.customerId.customerNumber);
-    }
- 
-  }
-
   submitData(){
     let account: Account = new Account;
     account.accountNumber = this.accountFormGroup.controls['accountNumber'].value;
@@ -58,9 +44,24 @@ export class AccountformComponent implements OnInit {
     this.accountService.update(account).subscribe((response)=>{
       console.log(JSON.stringify(response));
       this.result.emit(true);
+      location.href = '/accountlist';
     },(err)=>{
       alert('error : '+JSON.stringify(err));
     });
+  }
+
+  updateData(){
+    this.setDataToForm(this.account);
+  }
+
+  setDataToForm(account){
+    if(account){
+      this.accountFormGroup.controls['accountNumber'].setValue(this.account.accountNumber);
+      this.accountFormGroup.controls['openDate'].setValue(this.account.openDate);
+      this.accountFormGroup.controls['balance'].setValue(this.account.balance);
+      this.accountFormGroup.controls['customerId'].setValue(this.account.customerId.customerNumber);
+    }
+ 
   }
 
   cancel(){
@@ -80,8 +81,10 @@ export class AccountformComponent implements OnInit {
     this.accountService.insert(account).subscribe((response)=>{
       console.log(JSON.stringify(response));
       this.result.emit(true);
+      location.href = '/accountlist';
     },(err)=>{
       alert('error : '+JSON.stringify(err));
-    });
+    }
+    );
   }
 }

@@ -3,12 +3,14 @@
 <title>Account List</title>
   </head>
   <body>
-    <table border="1">
-      <thead>
-        <th>Acc Number</th>
-        <th>Open Date</th>
-        <th>Balance</th>
-        <th>Customer ID</th>
+    <table class="table table-bordered table-purple">
+        <thead>
+            <th scope="col">Acc Number</th>
+            <th scope="col">Open Date</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Action</th>
+
       </thead>
       <tbody>
         <tr *ngFor="let acc of listAccount">
@@ -17,6 +19,8 @@
           <td>{{acc.balance}}</td>
           <td>{{acc.customerId.firstName}}</td>
           <td>
+          <button (click)="show(acc)">View</button>
+          <button (click)="edit">Edit</button>
           <button type="button" (click) = "delete(acc.accountNumber)">clear</button></td>
         </tr>
       </tbody>

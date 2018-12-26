@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
 import { AccountformComponent } from '../form/accountform.component';
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-accountlist',
@@ -17,10 +18,13 @@ export class AccountlistComponent implements OnInit {
   selectedAccount: Account = new Account();
 
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private route : ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
+    // this.route.params.subscribe(params =>{
+    //   let customerId = params['customerId'];
     this.loadData();
+  // })
   }
 
   selectAccount(account: Account) {
@@ -32,10 +36,12 @@ export class AccountlistComponent implements OnInit {
     
     this.selectedAccount = copyAccount;
     this.showDetail = true;
-    this.formAccount ? this.formAccount.updateData(): "";
+    this.formAccount.updateData();
   }
-  loadData() {
-    this.accountService.getList().subscribe((response) => {
+
+  loadData(customerId?) {
+    this.accountService.getList(customerId).subscribe(
+      (response) => {
       console.log(JSON.stringify(response));
       Object.assign(this.listAccount, response);
     }, (err) => {
@@ -52,6 +58,11 @@ export class AccountlistComponent implements OnInit {
     });
     
   }
+
+  show(account : Account){
+    this.router.navigate(['/transactionlist/', {accountId : account.accountNumber}])
+   }
+
   prosesResult(result) {
     if (result) {
       this.showDetail= false;

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TransactionformComponent } from '../form/transactionform.component';
 import { Transaction } from '../transaction';
 import { TransactionService } from 'src/app/transaction/transaction.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -17,10 +18,13 @@ export class TransactionlistComponent implements OnInit {
   showDetail: boolean = true;
   selectedTransaction : Transaction = new Transaction();
 
-  constructor(private transactionService : TransactionService) { }
+  constructor(private transactionService : TransactionService, private route : ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
-    this.loadData();
+    this.route.params.subscribe(params =>{
+      let accountId = params['accountId'];
+    this.loadData(accountId);
+    })
   }
   
   selectTransaction(transaction : Transaction){
@@ -37,8 +41,8 @@ export class TransactionlistComponent implements OnInit {
 
   }
 
-  loadData(){
-    this.transactionService.getList().subscribe(
+  loadData(accountId?){
+    this.transactionService.getList(accountId).subscribe(
       (response)=>{
         console.log(JSON.stringify(response));
         Object.assign(this.listTransaction, response);
@@ -58,6 +62,10 @@ export class TransactionlistComponent implements OnInit {
     );
   }
 
+  // show(transaction : Transaction){
+  //   this.router.navigate(['/transactionlist/', {transactionId : transaction.idtrans}])
+  //  }
+
   prosesResult(result){
     if(result){
       this.showDetail=false;
@@ -65,5 +73,3 @@ export class TransactionlistComponent implements OnInit {
     }
   }
 }
-
-

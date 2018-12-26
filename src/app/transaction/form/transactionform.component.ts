@@ -47,6 +47,7 @@ export class TransactionformComponent implements OnInit {
       (response)=>{
         console.log(JSON.stringify(response));
         this.result.emit(true);
+        location.href = '/transactionlist';
     },(err)=>{
       alert('error '+JSON.stringify(err));
     }
@@ -57,8 +58,8 @@ export class TransactionformComponent implements OnInit {
     this.setDataToForm(this.transaction);
   }
 
-  setDataToForm(customer){
-    if(customer){
+  setDataToForm(transaction){
+    if(transaction){
       this.transactionFormGroup.controls['idtrans'].setValue(this.transaction.idtrans);
       this.transactionFormGroup.controls['amountsign'].setValue(this.transaction.amountsign);
       this.transactionFormGroup.controls['amount'].setValue(this.transaction.amount);

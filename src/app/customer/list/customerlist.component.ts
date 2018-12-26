@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 import { CustomerformComponent } from '../form/customerform.component';
+import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 
 
@@ -13,11 +15,12 @@ import { CustomerformComponent } from '../form/customerform.component';
 export class CustomerlistComponent implements OnInit {
   @ViewChild('formCustomer')
   formCustomer: CustomerformComponent;
+
   listCustomer: Customer[] = [];
   showDetail: boolean = true;
   selectedCustomer: Customer = new Customer();
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private route : Router) { }
 
   ngOnInit() {
     this.loadData();
@@ -48,6 +51,10 @@ export class CustomerlistComponent implements OnInit {
     }
     );
   }
+
+show(customer : Customer){
+ this.route.navigate(['/accountlist/', {customerId : customer.customerNumber}])
+}
 
   delete(customerNumber){
     this.customerService.delete(customerNumber).subscribe(

@@ -9,8 +9,12 @@ export class AccountService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getList(){
+  getList(cn?){
+    if(cn == undefined){
     return this.httpClient.get('http://localhost:8080/account/listnya');
+    }else{
+    return this.httpClient.get('http://localhost:8080/account/list?customer=' + cn);
+    }
   }
 
   update(account: Account){
