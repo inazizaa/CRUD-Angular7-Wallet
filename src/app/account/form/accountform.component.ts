@@ -64,10 +64,6 @@ export class AccountformComponent implements OnInit {
  
   }
 
-  cancel(){
-    this.result.emit(true);
-  }
-
   insertData(){
     let account: Account = new Account();
     account.accountNumber = this.accountFormGroup.controls['accountNumber'].value;
@@ -86,5 +82,14 @@ export class AccountformComponent implements OnInit {
       alert('error : '+JSON.stringify(err));
     }
     );
+  }
+
+  setSelectedCustomer(customer: Customer){
+    this.accountFormGroup.controls['customer'].setValue(customer.customerNumber);
+    this.accountFormGroup.updateValueAndValidity();
+  }
+
+   cancel(){
+    this.result.emit(true);
   }
 }

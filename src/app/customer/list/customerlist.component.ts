@@ -45,7 +45,7 @@ export class CustomerlistComponent implements OnInit {
     this.customerService.getList().subscribe(
       (response)=>{
         console.log(JSON.stringify(response));
-        Object.assign(this.listCustomer, response);
+        Object.assign(this.listCustomer, response.values);
     },(err)=>{
       alert('error '+JSON.stringify(err));
     }
@@ -53,14 +53,14 @@ export class CustomerlistComponent implements OnInit {
   }
 
 show(customer : Customer){
- this.route.navigate(['/accountlist/', {customerId : customer.customerNumber}])
+ this.route.navigate(['/accountlist', {customerNumber : customer.customerNumber}])
 }
 
   delete(customerNumber){
+    console.log("customerNumber:"+customerNumber);
     this.customerService.delete(customerNumber).subscribe(
       (response)=>{
         // console.log(JSON.stringify(response));
-        location.href = '/customerlist';
     },(err)=>{
       alert('error '+JSON.stringify(err));
     }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
  import { Account} from './account';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,23 +10,29 @@ export class AccountService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getList(cn?){
-    if(cn == undefined){
-    return this.httpClient.get('http://localhost:8080/account/listnya');
-    }else{
-    return this.httpClient.get('http://localhost:8080/account/list?customer=' + cn);
+  getList(customerNumber?){
+    let params: string = "";
+    if(customerNumber){
+      params = "?customerNumber="+customerNumber;
     }
+    return this.httpClient.get('http://localhost:3000/account/list' + params);
   }
+
 
   update(account: Account){
-    return this.httpClient.put('http://localhost:8080/account/put', account);
+    return this.httpClient.put('http://localhost:3000/account', account);
   }
+
+  
 
   insert(account: Account){
-    return this.httpClient.post('http://localhost:8080/account/post', account);
+    return this.httpClient.post('http://localhost:3000/account', account);
   }
 
+
   delete(account){
-    return this.httpClient.delete('http://localhost:8080/account/delete/'+ account);
+    return this.httpClient.delete('http://localhost:3000/account'+ account);
   }
+
+  
 }

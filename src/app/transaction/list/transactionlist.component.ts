@@ -22,9 +22,9 @@ export class TransactionlistComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
-      let accountId = params['accountId'];
-    this.loadData(accountId);
-    })
+      let accountNumber = params['accountNumber'];
+    this.loadData(accountNumber);
+    });
   }
   
   selectTransaction(transaction : Transaction){
@@ -41,17 +41,18 @@ export class TransactionlistComponent implements OnInit {
 
   }
 
-  loadData(accountId?){
-    this.transactionService.getList(accountId).subscribe(
+  loadData(accountNumber?){
+    this.transactionService.getList(accountNumber).subscribe(
       (response)=>{
         console.log(JSON.stringify(response));
-        Object.assign(this.listTransaction, response);
+        Object.assign(this.listTransaction, response.values);
     },(err)=>{
       alert('error '+JSON.stringify(err));
     });
   }
 
   delete(idtrans){
+    console.log("idtrans:"+idtrans)
     this.transactionService.delete(idtrans).subscribe(
       (response)=>{
         // console.log(JSON.stringify(response));

@@ -21,10 +21,10 @@ export class AccountlistComponent implements OnInit {
   constructor(private accountService: AccountService, private route : ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
-    // this.route.params.subscribe(params =>{
-    //   let customerId = params['customerId'];
-    this.loadData();
-  // })
+     this.route.params.subscribe(params =>{
+       let customerNumber = params['customerNumber'];
+    this.loadData(customerNumber);
+   });
   }
 
   selectAccount(account: Account) {
@@ -39,11 +39,11 @@ export class AccountlistComponent implements OnInit {
     this.formAccount.updateData();
   }
 
-  loadData(customerId?) {
-    this.accountService.getList(customerId).subscribe(
+  loadData(customerNumber?) {
+    this.accountService.getList(customerNumber).subscribe(
       (response) => {
       console.log(JSON.stringify(response));
-      Object.assign(this.listAccount, response);
+      Object.assign(this.listAccount, response.values);
     }, (err) => {
       alert('error' + JSON.stringify(err));
     });
@@ -60,8 +60,9 @@ export class AccountlistComponent implements OnInit {
   }
 
   show(account : Account){
-    this.router.navigate(['/transactionlist/', {accountId : account.accountNumber}])
+    this.router.navigate(['/transactionlist/', {accountNumber : account.accountNumber}])
    }
+
 
   prosesResult(result) {
     if (result) {

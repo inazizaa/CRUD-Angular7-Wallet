@@ -17,7 +17,7 @@
           <td>{{trans.amountsign}}</td>
           <td>{{trans.amount}}</td>
           <td>{{trans.type}}</td>
-          <td>{{trans.accountId.accountNumber}}</td>
+          <td>{{trans.accountId ? trans.accountId.accountNumber : " "}}</td>
           <td>
             <button (click)="delete(trans.idtrans)">clear</button></td>
           </tr>
