@@ -17,13 +17,14 @@
     <tr>
       <td>Customer Id: </td>
       <!-- <td><input type="text" formControlName="customerId"></td> -->
-      <app-cobacombo (customer)="setSelectedCustomer($event)"></app-cobacombo>
+      <app-accountcombo (customer)="setSelectedCustomer($event)"></app-accountcombo> 
+      <!-- fungsi di line 20 memanggil combobox di shared -->
     </tr>
     </table>
     </form>
 
     <button type="button" (click)="cancelChanges()">Cancel</button>
-    <button type="button" (click)="submitData()">Update</button>
+    <button type="button" (click)="submitData()" [disabled]="!accountFormGroup.valid">Update</button>
     <button type="button" (click)="insertData()">Insert</button>
   </body>
 </html>

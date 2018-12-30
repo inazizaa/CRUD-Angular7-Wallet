@@ -3,13 +3,14 @@
 <title>Transaction List</title>
   </head>
   <body>
-    <table border="1">
+    <table class="table table-bordered table-purple">
       <thead>
-        <th>Transaksi ID</th>
-        <th>Amount Sign</th>
-        <th>Amount</th>
-        <th>Type</th>
-        <th>Account ID</th>
+        <th scope="col">Transaksi ID</th>
+        <th scope="col">Amount Sign</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Type</th>
+        <th scope="col">Account ID</th>
+        <th scope="col">Action</th>
       </thead>
       <tbody>
         <tr *ngFor="let trans of listTransaction">
@@ -19,7 +20,7 @@
           <td>{{trans.type}}</td>
           <td>{{trans.accountId ? trans.accountId.accountNumber : " "}}</td>
           <td>
-            <button (click)="delete(trans.idtrans)">clear</button></td>
+            <button (click)="delete(trans.idtrans)">delete</button></td>
           </tr>
         </tbody>
       </table>

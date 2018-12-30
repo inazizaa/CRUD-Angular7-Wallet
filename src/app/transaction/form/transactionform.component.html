@@ -19,12 +19,15 @@
       <td>Type:</td>
       <td> <input type="text"  formControlName="type"></td><br>
     </tr>
+    
     <tr>
       <td>Account ID </td>
-      <td><input type="text" formControlName="accountId"></td>
+      <!-- <td><input type="text" formControlName="accountId"></td> -->
+      <app-transactioncombo (account)="setSelectedAccount($event)"></app-transactioncombo>
     </tr>
   </table>
 </form>
+
 <button type="button" (click)="cancelChanges()">Cancel</button>
 <button type="button" (click)="submitData()" [disabled]="!transactionFormGroup.valid">Update</button>
 <button type="button" (click)="insertData()">Insert</button>

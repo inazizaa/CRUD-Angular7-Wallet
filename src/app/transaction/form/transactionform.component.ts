@@ -43,8 +43,7 @@ export class TransactionformComponent implements OnInit {
     transaction.accountId = account;
 
     
-    this.transactionService.update(transaction).subscribe(
-      (response)=>{
+    this.transactionService.update(transaction).subscribe((response)=>{
         console.log(JSON.stringify(response));
         this.result.emit(true);
         location.href = '/transactionlist';
@@ -87,6 +86,11 @@ export class TransactionformComponent implements OnInit {
       alert('error '+JSON.stringify(err));
     }
     );
+  }
+
+  setSelectedAccount(account : Account){
+    this.transactionFormGroup.controls['accountId'].setValue(account.accountNumber);
+    this.transactionFormGroup.updateValueAndValidity();
   }
 
   cancelChanges(){
