@@ -17,7 +17,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionformComponent } from './transaction/form/transactionform.component';
 import { TransactionlistComponent } from './transaction/list/transactionlist.component';
 import { from } from 'rxjs';
-//import { CobacomboComponent } from './shared/cobacombo/cobacombo.component';
+import { CobacomboComponent } from './shared/cobacombo/cobacombo.component';
 
 @NgModule({
   declarations: [ 
@@ -31,7 +31,7 @@ import { from } from 'rxjs';
      TransactionComponent,
      TransactionformComponent,
      TransactionlistComponent,
- //    CobacomboComponent
+     CobacomboComponent
   ],
   imports: [
     BrowserModule,

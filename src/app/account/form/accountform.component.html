@@ -16,7 +16,8 @@
     </tr>
     <tr>
       <td>Customer Id: </td>
-      <td><input type="text" formControlName="customerId"></td>
+      <!-- <td><input type="text" formControlName="customerId"></td> -->
+      <app-cobacombo (customer)="setSelectedCustomer($event)"></app-cobacombo>
     </tr>
     </table>
     </form>

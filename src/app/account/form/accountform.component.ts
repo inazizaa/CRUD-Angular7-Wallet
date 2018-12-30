@@ -85,7 +85,7 @@ export class AccountformComponent implements OnInit {
   }
 
   setSelectedCustomer(customer: Customer){
-    this.accountFormGroup.controls['customer'].setValue(customer.customerNumber);
+    this.accountFormGroup.controls['customerId'].setValue(customer.customerNumber);
     this.accountFormGroup.updateValueAndValidity();
   }
 
