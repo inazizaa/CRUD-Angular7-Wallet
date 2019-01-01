@@ -8,11 +8,3 @@ body {
     text-align: left;
     background: radial-gradient(#EBDEF0, #7D3C98);
   }
-
-th{
-    white-space: nowrap;
-}
-
-table{
-    background-color: #f6f5f8;
-}

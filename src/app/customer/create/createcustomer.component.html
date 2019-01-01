@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>
+    </title>
+  </head>
+  <body><h1> Create Data Customer </h1><br>
+    <form [formGroup]="customercreateForm">
+    <table>
+    <tr><td>FirstName:</td>
+        <td> <input type="text"  formControlName="firstName"></td><br>
+    </tr>
+    <tr>
+        <td>Lastname: </td>
+        <td><input type="text" formControlName="lastName"></td>
+    </tr>
+    <tr>
+        <td>Birth Date: </td>
+        <td><input type="date" class="form-control"  formControlName="birthDate"></td>
+    </tr>
+    <tr>
+        <td>Username: </td>
+        <td><input type="text" class="form-control" formControlName="username"></td>
+    </tr>
+    <tr>
+        <td>Password: </td>
+        <td><input type="text" class="form-control" formControlName="password"></td>
+    </tr>
+    <tr>
+        <td>PhoneNumber:</td>
+        <td><input type="text" formControlName="phoneNumber"></td>
+    </tr>
+    <tr>
+        <td>PhoneType:</td>
+        <td><input type="text"  formControlName="phoneType"></td>
+    </tr>  
+    </table>
+</form>
+    <button type="button" (click)="cancelChanges()">Cancel</button>
+    <button type="button" (click)="insertData()">Insert</button>
+</body>
+</html>

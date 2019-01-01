@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>
+
+    </title>
+  </head>
+  <body><h2> Create Form Account </h2>
+    <form [formGroup]="accForm" >
+        <label for="inputPassword" class="col-sm-2 col-form-label">Open Date</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" formControlName="openDate" placeholder="openDate">
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Balance</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" formControlName="balance" placeholder="balance">
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Customer Id</label>
+        <div class="col-sm-10">
+            <app-accountcombo (customer)="setSelectedCustomer($event)"></app-accountcombo> 
+          <!-- <input type="number" class="form-control" formControlName="customer" placeholder="customerId"> -->
+        </div>
+    </form>
+<br/>
+    <button type="button" [routerLink]="['/accountlist']" routerLinkActive="router-link-active">Cancel</button>
+    &nbsp; <button type="button"  (click)="insert()">Insert</button>
+  </body>
+</html>

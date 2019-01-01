@@ -14,7 +14,7 @@ export class AccountlistComponent implements OnInit {
   formAccount:AccountformComponent;
 
   listAccount: Account[]=[];
-  showDetail:boolean=true;
+  showDetail:boolean=false;
   selectedAccount: Account = new Account();
 
 

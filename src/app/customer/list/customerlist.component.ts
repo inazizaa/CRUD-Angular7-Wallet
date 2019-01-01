@@ -3,7 +3,6 @@ import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 import { CustomerformComponent } from '../form/customerform.component';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 
 
 
@@ -17,7 +16,7 @@ export class CustomerlistComponent implements OnInit {
   formCustomer: CustomerformComponent;
 
   listCustomer: Customer[] = [];
-  showDetail: boolean = true;
+  showDetail: boolean = false;
   selectedCustomer: Customer = new Customer();
 
   constructor(private customerService: CustomerService, private route : Router) { }

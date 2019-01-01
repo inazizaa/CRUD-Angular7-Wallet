@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>
+
+    </title>
+  </head>
+  <body><h2> Create Form Transaction </h2>
+    <form [formGroup]="trxForm">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Type</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" formControlName="type">
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Amount</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" formControlName="amount">
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Amount Sign</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" formControlName="amountsign">
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Account ID</label>
+        <div class="col-sm-10">
+          <app-transactioncombo (account)="setSelectedAccount($event)"></app-transactioncombo>
+          <!-- <input type="number" class="form-control" formControlName="amountsign"> -->
+        </div>
+    <!-- <table>
+    <tr>
+      <td>Type: </td>
+      <td><input type="string" formControlName="type"></td>
+    </tr>
+    <tr>
+      <td>Amount: </td>
+      <td><input type="string" formControlName="amount"></td>
+    </tr>
+    <tr>
+      <td>Amount Sign: </td>
+      <td><input type="string" formControlName="amountsign"></td>
+    </tr> -->
+    <!-- <tr>
+      <td>Account Id: </td>
+      <td><input type="Account" formControlName="accountId"></td>
+      <app-transactioncombo (account)="setSelectedAccount($event)"></app-transactioncombo>
+    </tr>
+    </table> -->
+    </form>
+
+    <button type="button" [routerLink]="['/transactionlist']" routerLinkActive="router-link-active">Cancel</button>
+    <button type="button" (click)="insert()">Insert</button>
+  </body>
+</html>

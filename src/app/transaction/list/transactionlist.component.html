@@ -2,15 +2,16 @@
   <head>
 <title>Transaction List</title>
   </head>
-  <body>
-    <table class="table table-bordered table-purple">
-      <thead>
-        <th scope="col">Transaksi ID</th>
-        <th scope="col">Amount Sign</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Type</th>
+  <body class="index-page sidebar-collapse">
+    <button type="button" [routerLink]="['/transactioncreate']" routerLinkActive="router-link-active">+ Create New</button>
+    <table class="table table-sm table-bordered" style="width:60%" align="center">
+      <thead class="table-active" align="center">
+        <th scope="col">NO TRANSACTION</th>
+        <th scope="col">AMOUNT SIGN</th>
+        <th scope="col">AMOUNT</th>
+        <th scope="col">TYPE</th>
         <th scope="col">Account ID</th>
-        <th scope="col">Action</th>
+        <th scope="col">ACTION</th>
       </thead>
       <tbody>
         <tr *ngFor="let trans of listTransaction">
@@ -19,7 +20,7 @@
           <td>{{trans.amount}}</td>
           <td>{{trans.type}}</td>
           <td>{{trans.accountId ? trans.accountId.accountNumber : " "}}</td>
-          <td>
+          <td align="center">
             <button (click)="delete(trans.idtrans)">delete</button></td>
           </tr>
         </tbody>

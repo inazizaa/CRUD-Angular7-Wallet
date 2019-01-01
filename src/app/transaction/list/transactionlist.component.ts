@@ -15,7 +15,7 @@ export class TransactionlistComponent implements OnInit {
   formTransaction : TransactionformComponent;
 
   listTransaction : Transaction[] = [];
-  showDetail: boolean = true;
+  showDetail: boolean = false;
   selectedTransaction : Transaction = new Transaction();
 
   constructor(private transactionService : TransactionService, private route : ActivatedRoute, private router : Router) { }
